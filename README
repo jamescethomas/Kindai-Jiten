@@ -1,0 +1,68 @@
+URBANJISHO
+Japanese slang/expression dictionary written by and for users
+
+TECH STACK
+react
+nodejs
+mongo
+
+FEATURES MVP V1 - TODO
+  * View word/phrase (page)
+    - As author/admin -> Edit word
+    - As logged in user -> vote/downvote
+    - As logged in user -> comment
+  * Loading animation
+  * Bottom bar
+  * About page
+  * Contact / suggestion / question
+  * Brand??
+    - domain !
+    - reserve twitter
+    - reserve FB
+  * deploy on aws
+
+MVP BUGS
+  * Duplicate words
+  * type space in search bar
+
+FEATURES V1 DONE!
+  * Nav bar
+    - Define a word (link to define a word page)
+    - choose language
+    - Login
+    - Search words !
+    - profile link
+  * HOME (page) - view words by date, newest on top
+    - pagination !
+  * DEFINE (page)
+    - Japanese
+    - Japanese example
+  * View word/phrase (page)
+    - Order by date
+    - Japanese
+    - Japanese example
+    - Share on social media
+    - View author + link to all by author
+    - As author -> delete word
+    - Localize delete modal
+    - Localize author controls
+  * USER
+    - Login (page)
+    - Via Facebook
+    - View PROFILE (page)
+    - update nickname
+    - View words added by user
+
+FEATURES V1.01
+  * User
+    - Stats
+    - Show furigana setting
+  * DEFINE (page)
+    - English ?
+    - reading ?
+    - loading mask !
+  * Login
+    - Via Google
+    - Create account w/o social media
+    - Manage definitions
+    - Edit definitions

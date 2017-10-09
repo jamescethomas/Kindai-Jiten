@@ -1,0 +1,133 @@
+.App {
+  /* text-align: center; */
+}
+
+.Define,
+.Home,
+.Word,
+.Login {
+  text-align: center;
+}
+
+.nav-title {
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  float: left;
+}
+
+.nav-bar .menu {
+  top: -20px;
+}
+
+.search-input {
+  border: 1px solid #00abc0;
+}
+
+.search-input:focus {
+  border: 1px solid #00869a;
+  border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+  /* box-shadow: 0px 0px 2px 1px #e8fcff; */
+}
+
+.search-droplist-item.highlighted,
+.search-droplist-item:hover {
+  background-color: #00abc0;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.search-droplist-item.highlighted .search-droplist-item-defition,
+.search-droplist-item:hover .search-droplist-item-defition {
+  color: white !important;
+}
+
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+
+.background-image {
+  --cr: #D3D3D3	;
+  background-image:
+  radial-gradient(circle at 100% 150%, var(--cr) 24%, white 25%, white 28%, var(--cr) 29%, var(--cr) 36%, white 36%, white 40%, transparent 40%, transparent),
+  radial-gradient(circle at 0    150%, var(--cr) 24%, white 25%, white 28%, var(--cr) 29%, var(--cr) 36%, white 36%, white 40%, transparent 40%, transparent),
+  radial-gradient(circle at 50%  100%, white 10%, var(--cr) 11%, var(--cr) 23%, white 24%, white 30%, var(--cr) 31%, var(--cr) 43%, white 44%, white 50%, var(--cr) 51%, var(--cr) 63%, white 64%, white 71%, transparent 71%, transparent),
+  radial-gradient(circle at 100% 50%, white 5%, var(--cr) 6%, var(--cr) 15%, white 16%, white 20%, var(--cr) 21%, var(--cr) 30%, white 31%, white 35%, var(--cr) 36%, var(--cr) 45%, white 46%, white 49%, transparent 50%, transparent),
+  radial-gradient(circle at 0    50%, white 5%, var(--cr) 6%, var(--cr) 15%, white 16%, white 20%, var(--cr) 21%, var(--cr) 30%, white 31%, white 35%, var(--cr) 36%, var(--cr) 45%, white 46%, white 49%, transparent 50%, transparent);
+
+
+  background-color:white;
+  /*background-image:
+  radial-gradient(circle at 100% 150%, silver 24%, white 25%, white 28%, silver 29%, silver 36%, white 36%, white 40%, transparent 40%, transparent),
+  radial-gradient(circle at 0    150%, silver 24%, white 25%, white 28%, silver 29%, silver 36%, white 36%, white 40%, transparent 40%, transparent),
+  radial-gradient(circle at 50%  100%, white 10%, silver 11%, silver 23%, white 24%, white 30%, silver 31%, silver 43%, white 44%, white 50%, silver 51%, silver 63%, white 64%, white 71%, transparent 71%, transparent),
+  radial-gradient(circle at 100% 50%, white 5%, silver 6%, silver 15%, white 16%, white 20%, silver 21%, silver 30%, white 31%, white 35%, silver 36%, silver 45%, white 46%, white 49%, transparent 50%, transparent),
+  radial-gradient(circle at 0    50%, white 5%, silver 6%, silver 15%, white 16%, white 20%, silver 21%, silver 30%, white 31%, white 35%, silver 36%, silver 45%, white 46%, white 49%, transparent 50%, transparent);*/
+  background-size:50px 25px;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+/*background-size: cover;*/
+/*background-repeat: no-repeat;*/
+background-position: center center;
+width: 105%;
+height: 180vh;
+/*filter: blur(2px);
+-webkit-filter: blur(0.5px);*/
+opacity: 0.1;
+left: -10px;
+top: -70vh;
+position: fixed;
+right: 0;
+overflow: hidden;
+z-index: -2;
+}
+
+.background-image-gradient {
+  /* background: linear-gradient(45deg, rgba(255, 64, 129, 0.5) 10%, #2cb5e8 75%), no-repeat; */
+  background: linear-gradient(45deg, #2cb5e8 10%, rgba(255, 64, 129, 0.5) 75%), no-repeat;
+
+  opacity: 0.1;
+  position: fixed;
+  left: -10px;
+  top: -70vh;
+  width: 105%;
+  height: 180vh;
+  z-index: -2;
+}
+
+.share-button {
+  opacity: 0.5
+}
+
+.share-button:hover {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.link {
+  color: rgb(0, 188, 212);
+  text-decoration: underline;
+}
+
+.link:hover {
+  cursor: pointer;
+  color: #106c8f;
+}
