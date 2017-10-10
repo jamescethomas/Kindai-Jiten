@@ -33,6 +33,7 @@ class Example extends Component {
           fullWidth={true}
           rows={2}
           errorText={this.props.errorText}
+          floatingLabelFixed={this.props.floatingLabelFixed}
         />
       </div>
     );

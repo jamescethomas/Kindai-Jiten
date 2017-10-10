@@ -8,7 +8,6 @@ mongo
 
 FEATURES MVP V1 - TODO
   * View word/phrase (page)
-    - As author/admin -> Edit word
     - As logged in user -> vote/downvote
     - As logged in user -> comment
   * Loading animation
@@ -46,6 +45,7 @@ FEATURES V1 DONE!
     - As author -> delete word
     - Localize delete modal
     - Localize author controls
+    - As author -> Edit word
   * USER
     - Login (page)
     - Via Facebook
@@ -57,6 +57,8 @@ FEATURES V1.01
   * User
     - Stats
     - Show furigana setting
+  * Words
+    - As admin -> Edit word
   * DEFINE (page)
     - English ?
     - reading ?

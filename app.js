@@ -14,6 +14,7 @@ var profile = require('./app/module/profile.js');
 
 var kuroshiro = require('kuroshiro');
 var dictionary = require('./app/module/dictionary.js');
+var like = require('./app/module/like.js');
 
 var app = express();
 var port = process.env.PORT || 5000;
@@ -85,6 +86,7 @@ app.post('/api/loginTest', users.loginTest);
 app.post('/api/updateUserName', users.updateUserName);
 app.post('/api/deleteWord', dictionary.delete);
 app.post('/api/edit', dictionary.edit);
+app.post('/api/like', like.like);
 
 // profile api mappings
 app.get('/api/profile/:userid', profile.read);

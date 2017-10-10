@@ -15,17 +15,7 @@ var hashAndSalt = require('password-hash-and-salt');
 var kuroshiro = require('kuroshiro');
 var wanakana = require('wanakana');
 
-var wordSchema = new Schema({
-  wordId: Number,
-  reading: String, // Phonetic guide in hiragana
-  dateAdded: Date,
-  userid: Number,
-
-  word: String,
-  definition: String,
-  examples: Array
-});
-
+var wordSchema = require('../schema/wordSchema.js');
 var WordModel = mongoose.model('words', wordSchema);
 
 var word = {

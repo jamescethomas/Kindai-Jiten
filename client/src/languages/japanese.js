@@ -35,6 +35,8 @@ edit = 編集
 delete = 削除
 confirm-delete = 削除を確認
 confirm-delete-subheading = 「{ $word }」を削除してもよろしいですか？
+like = いいね！
+dislike = よくない
 
 [[Share button]]
 share-message = アーバン辞書で見つけた言葉を見てね！

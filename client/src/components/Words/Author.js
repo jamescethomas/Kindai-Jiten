@@ -25,8 +25,7 @@ class Author extends Component {
     const style = {
       textAlign: 'left',
       fontSize: '15px',
-      paddingTop: '5px',
-      float: 'left'
+      paddingBottom: '10px',
     }
 
     if (this.props.language === 'JP') {

@@ -131,3 +131,30 @@ z-index: -2;
   cursor: pointer;
   color: #106c8f;
 }
+
+.like .message,
+.dislike .message {
+  text-decoration: underline;
+}
+
+.like-button,
+.dislike-button {
+  color: gray;
+  transition: color 0.2s ease;
+}
+
+.like-button:hover,
+.dislike-button:hover {
+  cursor: pointer;
+  color: black;
+}
+
+.like {
+  margin-right: 10px;
+  color: black;
+  user-select: none; /* Standard */
+}
+
+.dislike {
+  user-select: none; /* Standard */
+}

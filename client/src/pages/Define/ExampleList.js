@@ -51,6 +51,7 @@ class ExampleList extends Component {
             removeExample={this.handleRemoveExample.bind(this)}
             updateExample={this.props.updateExample}
             errorText={this.props.errorText}
+            floatingLabelFixed={this.props.floatingLabelFixed}
             {...example} />
         ))}
       </div>

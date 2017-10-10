@@ -184,6 +184,7 @@ class EditForm extends Component {
             <TextField
               style={{textAlign: 'left'}}
               floatingLabelText={Strings.get('word-or-phrase')}
+              floatingLabelFixed={true}
               fullWidth={true}
 
               value={this.state.word}
@@ -196,6 +197,7 @@ class EditForm extends Component {
             <TextField
               style={{textAlign: 'left'}}
               floatingLabelText={Strings.get('definition')}
+              floatingLabelFixed={true}
               multiLine={true}
               fullWidth={true}
               rows={3}
@@ -213,6 +215,7 @@ class EditForm extends Component {
               removeExample={this.removeExample.bind(this)}
               updateExample={this.updateExample.bind(this)}
               errorText={this.state.exampleError}
+              floatingLabelFixed={true}
             />
             <br/>
 

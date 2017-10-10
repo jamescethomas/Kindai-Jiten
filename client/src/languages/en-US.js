@@ -35,6 +35,8 @@ edit = Edit
 delete = Delete
 confirm-delete = Confirm delete
 confirm-delete-subheading = Are you sure you want to delete '{ $word }'?
+like = Like
+dislike = Dislike
 
 [[Share button]]
 share-message = Check out this word I found on Urbanjisho!

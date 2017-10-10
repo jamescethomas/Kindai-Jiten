@@ -22,7 +22,7 @@ class ShareButtons extends Component {
 
     const containerStyle = {
       textAlign: 'right',
-      marginBottom: '10px'
+      marginTop: '10px'
     }
 
     return (
