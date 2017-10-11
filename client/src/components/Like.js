@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import FontAwesome from 'react-fontawesome';
 import { withRouter } from 'react-router-dom';
 import Strings from 'react-l20n-u';
+import _ from 'lodash';
 
 class Like extends Component {
   constructor(props) {
@@ -14,6 +15,75 @@ class Like extends Component {
       liked: false,
       disliked: false
     }
+  }
+
+  componentDidMount() {
+    // TODO Get initial like count
+    fetch('/likes?wordId=' + this.props.wordId)
+    .then((res) => res.json())
+    .then((body) => {
+      this.updateAfterFetch(body);
+    });
+  }
+
+  updateAfterFetch(body) {
+    if (!_.isEmpty(body)) {
+      this.setState((prevState) => {
+        var hasLiked = (this.props.userid && body.likes[this.props.userid]),
+            hasDisliked = (this.props.userid && body.dislikes[this.props.userid]);
+
+
+        return {
+          likeCount: body.totalLikes,
+          dislikeCount: body.totalDislikes,
+          liked: hasLiked,
+          disliked: hasDisliked
+        }
+      });
+    }
+  }
+
+  /**
+   * Like or dislike a word
+   */
+  like(userid) {
+    this.handleLikeDislike(true, {
+      token: this.props.token,
+      wordId: this.props.wordId
+    });
+  }
+
+  dislike(userid) {
+    this.handleLikeDislike(false, {
+      token: this.props.token,
+      wordId: this.props.wordId
+    });
+  }
+
+  handleLikeDislike(like, data) {
+    var postBody = {
+      wordId: data.wordId
+    }
+
+    if (like) {
+      postBody.like = true;
+    } else {
+      postBody.dislike = true;
+    }
+
+    fetch('/api/like', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'x-access-token': data.token
+      },
+      body: JSON.stringify(postBody)
+    })
+    .then(res => res.json())
+    .then(body => {
+      this.updateAfterFetch(body);
+    });
   }
 
   onLikeClick() {
@@ -47,7 +117,7 @@ class Like extends Component {
     });
 
     // API Call to like
-    this.props.likeCallback();
+    this.like();
   }
 
   onDislikedClick() {
@@ -81,7 +151,7 @@ class Like extends Component {
     });
 
     // API Call to dislike
-    this.props.dislikeCallback();
+    this.dislike();
   }
 
   render() {
@@ -107,7 +177,7 @@ class Like extends Component {
             {this.state.likeCount}
           </span>
           <span
-            style={(this.state.liked) ? selectedStyle : {}}
+            style={(this.state.liked && this.props.loggedIn) ? selectedStyle : {}}
             className="like-button"
             onClick={this.onLikeClick.bind(this)}
           >
@@ -122,7 +192,7 @@ class Like extends Component {
             {this.state.dislikeCount}
           </span>
           <span
-            style={(this.state.disliked) ? selectedStyle : {}}
+            style={(this.state.disliked && this.props.loggedIn) ? selectedStyle : {}}
             className="dislike-button"
             onClick={this.onDislikedClick.bind(this)}
           >
@@ -138,9 +208,17 @@ class Like extends Component {
 }
 
 function mapStateToProps (state) {
-  return {
-    loggedIn: state.user.loggedIn,
+  var props = {};
+
+  if (state.user && state.user.loggedIn) {
+    props.token = state.user.data.token;
+    props.userid = state.user.data.user.userid;
   }
+
+  props.loggedIn = state.user.loggedIn
+
+  return props;
 }
+
 
 export default withRouter(connect(mapStateToProps, null)(Like));

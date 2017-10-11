@@ -87,6 +87,7 @@ app.post('/api/updateUserName', users.updateUserName);
 app.post('/api/deleteWord', dictionary.delete);
 app.post('/api/edit', dictionary.edit);
 app.post('/api/like', like.like);
+app.get('/likes', like.fetchLikes);
 
 // profile api mappings
 app.get('/api/profile/:userid', profile.read);

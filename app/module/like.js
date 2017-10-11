@@ -164,6 +164,30 @@ var like = {
         updateUserLikeState
       ]
     );
+  },
+
+  fetchLikes: function (req, res) {
+    var wordId = req.query.wordId,
+        conditions,
+        likeData = {};
+
+    conditions = {
+      wordId: wordId
+    };
+
+    mongoose.model('words').findOne(conditions, function (err, word) {
+      if (err) {
+        utils.returnError(res);
+        return;
+      } else {
+        if (word.likeData) {
+          likeData = word.likeData;
+        }
+
+        res.status(HttpStatus.OK);
+        res.json(likeData);
+      }
+    });
   }
 }
 

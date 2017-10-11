@@ -14,54 +14,6 @@ import ShareButtons from 'components/ShareButtons.js';
 import Like from 'components/Like.js';
 
 class Word extends Component {
-  componentDidMount() {
-    // TODO Get initial like count
-  }
-
-  /**
-   * Like or dislike a word
-   */
-  like(userid) {
-    this.handleLikeDislike(true, {
-      token: this.props.token,
-      wordId: this.props.wordId
-    });
-  }
-
-  dislike(userid) {
-    this.handleLikeDislike(false, {
-      token: this.props.token,
-      wordId: this.props.wordId
-    });
-  }
-
-  handleLikeDislike(like, data) {
-    var postBody = {
-      wordId: data.wordId
-    }
-
-    if (like) {
-      postBody.like = true;
-    } else {
-      postBody.dislike = true;
-    }
-
-    fetch('/api/like', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'x-access-token': data.token
-      },
-      body: JSON.stringify(postBody)
-    })
-    .then(res => res.json())
-    .then(body => {
-      console.log(body);
-      // TODO Update UI
-    });
-  }
-
   render() {
     const style = {
       width: 600,
@@ -94,8 +46,7 @@ class Word extends Component {
             deleteWordCallback={this.props.deleteWordCallback}
           />
           <Like
-            likeCallback={this.like.bind(this)}
-            dislikeCallback={this.dislike.bind(this)}
+            wordId={this.props.wordId}
           />
           <ShareButtons
             word={this.props.word}
@@ -106,14 +57,4 @@ class Word extends Component {
   }
 }
 
-function mapStateToProps (state) {
-  if (state.user && state.user.loggedIn) {
-    return {
-      token: state.user.data.token
-    }
-  } else {
-    return {};
-  }
-}
-
-export default connect(mapStateToProps, null)(Word);
+export default Word;
