@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Strings from 'react-l20n-u';
 import FacebookLogin from 'react-facebook-login';
+import FontAwesome from 'react-fontawesome';
 
 // Material UI
 import Paper from 'material-ui/Paper';
@@ -62,12 +63,16 @@ class LoginForm extends Component {
           <Paper style={style} zDepth={1}>
             <FormHeader
               text={Strings.get('login-message')}
+              subText={Strings.get('login-sub-heading')}
             />
+            <br/>
             <FacebookLogin
+             label="TEST"
              appId="916053341770476"
              autoLoad={false}
              fields="email,picture,first_name,last_name,birthday"
              callback={this.facebookAuthCallback.bind(this)}
+             textButton={Strings.get('facebook-login')}
             />
           </Paper>
         </div>

@@ -47,6 +47,7 @@ class Word extends Component {
           />
           <Like
             wordId={this.props.wordId}
+            word={this.props.word}
           />
           <ShareButtons
             word={this.props.word}

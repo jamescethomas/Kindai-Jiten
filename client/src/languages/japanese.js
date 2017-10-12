@@ -28,7 +28,9 @@ example-error = 例文を入力してください
 date-format = ja-JP
 
 [[pages/Login]]
-login-message = Login with facebook to comment and add new words
+login-message = Facebookでログインして
+login-sub-heading = 新しい言葉を作成したり、コメントしたり、「いいね！」をしたりする
+facebook-login = Facebookでログイン
 
 [[Word card]]
 edit = 編集

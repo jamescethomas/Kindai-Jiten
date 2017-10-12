@@ -28,7 +28,9 @@ example-error = Please enter an example
 date-format = en-US
 
 [[pages/Login]]
-login-message = Login with facebook to comment and add new words
+login-message = Login with Facebook to
+login-sub-heading = like, comment, and author new definitions
+facebook-login = Login with Facebook
 
 [[Word card]]
 edit = Edit

@@ -30,15 +30,16 @@ class Word extends Component {
   render() {
     if (this.props.match.params.word !== this.state.word.word) {
       this.getWord(this.props.match.params.word);
+      return (<div/>);
+    } else {
+      return (
+        <div className="Word">
+          <MuiThemeProvider muiTheme={App.myTheme}>
+            <WordCard {...this.state.word} />
+          </MuiThemeProvider>
+        </div>
+      );
     }
-
-    return (
-      <div className="Word">
-        <MuiThemeProvider muiTheme={App.myTheme}>
-          <WordCard {...this.state.word} />
-        </MuiThemeProvider>
-      </div>
-    );
   }
 }
 

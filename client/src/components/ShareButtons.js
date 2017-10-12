@@ -53,14 +53,6 @@ class ShareButtons extends Component {
         />
         <RaisedButton
           className="share-button"
-          backgroundColor="#5f99cf"
-          style={style}
-          icon={<FontAwesome style={iconStyle} name='reddit'/>}
-          href={"https://reddit.com/submit/?url=" + url}
-          target="_blank"
-        />
-        <RaisedButton
-          className="share-button"
           backgroundColor="#777777"
           style={style}
           icon={<FontAwesome style={iconStyle} name='envelope'/>}

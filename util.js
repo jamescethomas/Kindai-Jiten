@@ -1,7 +1,8 @@
 /* util.js */
+var HttpStatus = require('http-status-codes');
 
 var util = {
-    returnError: function (err) {
+    returnError: function (res, err) {
         console.log(err);
         /*
          * status  : 500

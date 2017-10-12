@@ -4,13 +4,14 @@ class FormHeader extends Component {
   style = {
     float: 'left',
     fontSize: '20px',
-    color: 'rgba(0, 0, 0, 0.75)'
+    color: 'rgba(0, 0, 0, 0.75)',
+    textAlign: 'left',
+    width: '100%'
   }
 
   subTextStyle = {
     fontSize: '15px',
-    color: 'rgba(0, 0, 0, 0.50)',
-    textAlign: 'left'
+    color: 'rgba(0, 0, 0, 0.50)'
   }
 
   render() {

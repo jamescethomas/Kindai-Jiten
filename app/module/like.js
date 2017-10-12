@@ -33,7 +33,7 @@ var like = {
     function getUserLikeState (callback) {
       mongoose.model('words').find(conditions, function (err, words) {
         if (err || words.length !== 1) {
-          utils.returnError();
+          util.returnError();
           return;
         } else {
           callback(null, words[0].likeData)
@@ -140,12 +140,12 @@ var like = {
 
       mongoose.model('words').update(conditions, update, function (err) {
         if (err) {
-          utils.returnError(res);
+          util.returnError(res);
           return;
         } else {
           mongoose.model('words').findOne(conditions, function (err, word) {
             if (err) {
-              utils.returnError(res);
+              util.returnError(res);
               return;
             } else {
               res.status(HttpStatus.ACCEPTED);
@@ -177,7 +177,7 @@ var like = {
 
     mongoose.model('words').findOne(conditions, function (err, word) {
       if (err) {
-        utils.returnError(res);
+        util.returnError(res);
         return;
       } else {
         if (word.likeData) {
