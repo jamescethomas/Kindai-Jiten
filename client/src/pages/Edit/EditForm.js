@@ -171,7 +171,15 @@ class EditForm extends Component {
     }
   };
 
+  onCancelClick() {
+    this.props.cancel();
+  }
+
   render() {
+    const buttonStyle = {
+      marginRight: '10px'
+    }
+
     return (
       <MuiThemeProvider muiTheme={App.myTheme}>
         <div className="definition-form">
@@ -220,9 +228,16 @@ class EditForm extends Component {
             <br/>
 
             <RaisedButton
+              style={buttonStyle}
               label={Strings.get('save')}
               primary={true}
               onClick={this.onSubmitClick.bind(this)}
+            />
+
+            <RaisedButton
+              label={Strings.get('cancel')}
+              primary={false}
+              onClick={this.onCancelClick.bind(this)}
             />
           </Paper>
         </div>

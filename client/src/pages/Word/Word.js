@@ -4,6 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import App from 'App.js';
 import WordCard from 'components/Words/Word.js';
+import Animation from 'utils/Animation.js';
 
 class Word extends Component {
   constructor(props) {
@@ -14,7 +15,14 @@ class Word extends Component {
     };
   }
 
+  componentDidMount() {
+    this.getWord(this.props.match.params.word);
+
+  }
+
   getWord(word) {
+    Animation.initFadeAnimation(this.refs.word, true);
+
     // Get the passwords and store them in state
     fetch('/word/' + word)
       .then(res => res.json())
@@ -24,16 +32,18 @@ class Word extends Component {
             word: body
           }
         });
+
+        Animation.fadeAnimation(this.refs.word);
       });
   }
 
   render() {
-    if (this.props.match.params.word !== this.state.word.word) {
+    if (this.state.word.word && this.props.match.params.word !== this.state.word.word) {
       this.getWord(this.props.match.params.word);
       return (<div/>);
     } else {
       return (
-        <div className="Word">
+        <div className="Word" ref="word">
           <MuiThemeProvider muiTheme={App.myTheme}>
             <WordCard {...this.state.word} />
           </MuiThemeProvider>

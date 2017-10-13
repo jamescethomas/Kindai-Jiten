@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-// import L20n from 'react-l20n-u';
+import Strings from 'react-l20n-u';
+
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Paper from 'material-ui/Paper';
 
 import App from 'App.js';
 import WordsList from 'components/Words/WordsList.js';
 import Paginator from 'components/Paginator.js';
+import Animation from 'utils/Animation.js';
 
 const ITEMS_PER_PAGE = 3;
 
@@ -38,6 +40,8 @@ class Author extends Component {
         offset = ITEMS_PER_PAGE * (page - 1),
         userid = this.props.match.params.userid;
 
+    Animation.initFadeAnimation(this.refs.author);
+
     // Get the words and store them in state
     fetch('/words?userid=' + userid + '&limit=' + limit + '&offset=' + offset)
       .then(res => res.json())
@@ -58,6 +62,8 @@ class Author extends Component {
             author: author
           }
         });
+
+        Animation.fadeAnimation(this.refs.author);
       });
   }
 
@@ -106,11 +112,11 @@ class Author extends Component {
     }
 
     return (
-      <div className="Home">
+      <div className="Home" ref="author">
         <MuiThemeProvider muiTheme={App.myTheme}>
           <div>
             <Paper style={paperStlye}>
-              {authorName}
+              {Strings.get('author', {name: authorName})}
             </Paper>
             <WordsList words={this.state.words} deleteWordCallback={this.getWords.bind(this)} />
             <Paginator

@@ -16,6 +16,7 @@ import * as actions from 'actions/actions.js';
 import FormHeader from 'components/FormHeader.js';
 import Link from 'components/Link.js';
 import App from 'App.js';
+import Animation from 'utils/Animation.js';
 
 
 class Profile extends Component {
@@ -30,6 +31,8 @@ class Profile extends Component {
   }
 
   componentDidMount() {
+    Animation.initFadeAnimation(this.refs.profile);
+
     if (!this.props.user || !this.props.user.loggedIn) {
       this.props.history.push('/home');
     } else {
@@ -55,6 +58,8 @@ class Profile extends Component {
         }
       });
     }
+
+    Animation.fadeAnimation(this.refs.profile);
   }
 
   updateUserName(component, value) {
@@ -134,7 +139,7 @@ class Profile extends Component {
     }
 
     return (
-      <div style={{textAlign: 'center'}}>
+      <div style={{textAlign: 'center'}} ref="profile">
         <MuiThemeProvider muiTheme={App.myTheme}>
           <div>
             <div>

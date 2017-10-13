@@ -8,9 +8,7 @@ mongo
 
 FEATURES MVP V1 - TODO
   * View word/phrase (page)
-    - As logged in user -> vote/downvote
     - As logged in user -> comment
-  * Loading animation
   * Bottom bar
   * About page
   * Contact / suggestion / question
@@ -46,12 +44,14 @@ FEATURES V1 DONE!
     - Localize delete modal
     - Localize author controls
     - As author -> Edit word
+    - As logged in user -> vote/downvote
   * USER
     - Login (page)
     - Via Facebook
     - View PROFILE (page)
     - update nickname
     - View words added by user
+  * Loading animation
 
 FEATURES V1.01
   * User

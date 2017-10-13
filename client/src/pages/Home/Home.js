@@ -6,6 +6,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import App from 'App.js';
 import WordsList from 'components/Words/WordsList.js';
 import Paginator from 'components/Paginator.js';
+import Animation from 'utils/Animation.js';
 
 const ITEMS_PER_PAGE = 3;
 
@@ -34,6 +35,9 @@ class Home extends Component {
     var limit = ITEMS_PER_PAGE,
         offset = ITEMS_PER_PAGE * (page - 1);
 
+    // Init the fade animation
+    Animation.initFadeAnimation(this.refs.home);
+
     // Get the words and store them in state
     fetch('/words?limit=' + limit + '&offset=' + offset)
       .then(res => res.json())
@@ -48,6 +52,9 @@ class Home extends Component {
             currentPage: page
           }
         });
+
+        // Fade in the content
+        Animation.fadeAnimation(this.refs.home);
       });
   }
 
@@ -67,7 +74,7 @@ class Home extends Component {
     }
 
     return (
-      <div className="Home">
+      <div className="Home" ref="home">
         <MuiThemeProvider muiTheme={App.myTheme}>
           <div>
           <WordsList words={this.state.words} deleteWordCallback={this.getWords.bind(this)} />

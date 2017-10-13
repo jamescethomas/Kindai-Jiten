@@ -31,7 +31,7 @@ class Author extends Component {
     if (this.props.language === 'JP') {
       return(
         <div style={style}>
-            <span className="link" onClick={this.onClick.bind(this)}>{userName}</span> 作
+            <span className="link" onClick={this.onClick.bind(this)}>{userName}</span>さん作
         </div>
       );
     } else {

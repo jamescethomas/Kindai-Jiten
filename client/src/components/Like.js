@@ -13,34 +13,48 @@ class Like extends Component {
       likeCount: 0,
       dislikeCount: 0,
       liked: false,
-      disliked: false
+      disliked: false,
+      wordId: null
     }
   }
 
   componentDidMount() {
-    // TODO Get initial like count
+    if (this.props.wordId) {
+      this.fetchLikes();
+    }
+  }
+
+  fetchLikes() {
+    var wordId = this.props.wordId;
+
     fetch('/likes?wordId=' + this.props.wordId)
     .then((res) => res.json())
     .then((body) => {
-      this.updateAfterFetch(body);
+      this.updateAfterFetch(body, wordId);
     });
   }
 
-  updateAfterFetch(body) {
-    if (!_.isEmpty(body)) {
-      this.setState((prevState) => {
-        var hasLiked = (this.props.userid && body.likes[this.props.userid]),
-            hasDisliked = (this.props.userid && body.dislikes[this.props.userid]);
-
-
-        return {
-          likeCount: body.totalLikes,
-          dislikeCount: body.totalDislikes,
-          liked: hasLiked,
-          disliked: hasDisliked
-        }
-      });
+  updateAfterFetch(body, wordId) {
+    if (_.isEmpty(body)) {
+      body.totalLikes = 0;
+      body.totalDislikes = 0;
+      body.likes = {};
+      body.dislikes = {};
     }
+
+    this.setState((prevState) => {
+      var hasLiked = (this.props.userid && body.likes[this.props.userid]),
+          hasDisliked = (this.props.userid && body.dislikes[this.props.userid]);
+
+
+      return {
+        likeCount: body.totalLikes,
+        dislikeCount: body.totalDislikes,
+        liked: hasLiked,
+        disliked: hasDisliked,
+        wordId: wordId
+      }
+    });
   }
 
   /**
@@ -63,7 +77,8 @@ class Like extends Component {
   handleLikeDislike(like, data) {
     var postBody = {
       wordId: data.wordId
-    }
+    },
+      wordId = data.wordId;
 
     if (like) {
       postBody.like = true;
@@ -82,7 +97,7 @@ class Like extends Component {
     })
     .then(res => res.json())
     .then(body => {
-      this.updateAfterFetch(body);
+      this.updateAfterFetch(body, wordId);
     });
   }
 
@@ -155,6 +170,11 @@ class Like extends Component {
   }
 
   render() {
+    if (this.props.wordId && this.state.wordId !== this.props.wordId) {
+      this.fetchLikes();
+      return(<div/>);
+    }
+
     const style = {
       marginTop: '14px',
       float: 'left',

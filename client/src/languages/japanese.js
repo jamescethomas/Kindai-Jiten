@@ -52,7 +52,7 @@ user-name-error-too-long = ユーザー名は50文字以下にする必要があ
 
 save = 保存
 my-words = 自分の追加した言葉
-author = { $name } 作
+author = { $name }さん
 
 [[Edit word]]
 edit-definition = 「{ $word }」を編集

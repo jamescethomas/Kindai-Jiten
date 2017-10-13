@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import EditForm from './EditForm.js';
+import EditForm from 'pages/Edit/EditForm.js';
+import Animation from 'utils/Animation.js';
 
 class Edit extends Component {
   constructor(props) {
@@ -21,6 +22,9 @@ class Edit extends Component {
   getWord() {
     var word = this.props.match.params.word;
 
+    // Init the fade animation
+    Animation.initFadeAnimation(this.refs.edit);
+
     // Get the passwords and store them in state
     fetch('/word/' + word)
       .then(res => res.json())
@@ -38,6 +42,9 @@ class Edit extends Component {
           }
         });
         this.refs.EditForm.dataLoaded(word);
+
+        // Fade in the content
+        Animation.fadeAnimation(this.refs.edit);
       });
   }
 
@@ -70,13 +77,18 @@ class Edit extends Component {
     });
   }
 
+  cancel() {
+    this.props.history.goBack();
+  }
+
   render() {
     return (
-      <div className="Define">
+      <div className="Define" ref="edit">
         <EditForm
           ref="EditForm"
           word={this.state.word}
           submit={this.submit.bind(this)}
+          cancel={this.cancel.bind(this)}
         />
       </div>
     );
