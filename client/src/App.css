@@ -1,5 +1,17 @@
 .App {
   /* text-align: center; */
+  min-height: 100%;
+  position: relative;
+}
+
+.app-body {
+  padding-bottom: 66px;
+}
+
+#root,
+html,
+body {
+  height: 100%;
 }
 
 .Define,
@@ -124,6 +136,8 @@ z-index: -2;
 .link {
   color: rgb(0, 188, 212);
   text-decoration: underline;
+  transition: color 0.2s ease;
+  user-select: none; /* Standard */
 }
 
 .link:hover {

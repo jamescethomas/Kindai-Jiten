@@ -35,11 +35,13 @@ class LoginForm extends Component {
     })
     .then(res => res.json())
     .then(body => {
-      // Save the user data is redux + cookies
-      this.props.actions.loginUser(body);
+      if (!body.error) {
+        // Save the user data is redux + cookies
+        this.props.actions.loginUser(body);
 
-      // Navigate to the home page for now TODO profile?
-      this.props.history.push('/home');
+        // Navigate to the home page for now TODO profile?
+        this.props.history.push('/home');
+      }
     });
 
     // TODO

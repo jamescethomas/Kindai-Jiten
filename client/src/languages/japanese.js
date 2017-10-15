@@ -11,6 +11,7 @@ cancel = キャンセル
 [[nav]]
 home =  ホーム
 about = このサイトについて
+contact = コンタクト
 define = 新しい言葉を追加
 login = ログイン
 logout = ログアウト
@@ -56,4 +57,7 @@ author = { $name }さん
 
 [[Edit word]]
 edit-definition = 「{ $word }」を編集
+
+[[Bottom Bar]]
+copy-right = © 2017 トーマス ジェームズ
 `;

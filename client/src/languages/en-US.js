@@ -11,6 +11,7 @@ cancel = Cancel
 [[nav]]
 home = Home
 about = About
+contact = Contact
 define = Define
 login = Login
 logout = Logout
@@ -56,4 +57,7 @@ author = By { $name }
 
 [[Edit word]]
 edit-definition = Edit "{ $word }"
+
+[[Bottom Bar]]
+copy-right = © 2017 James Thomas
 `;

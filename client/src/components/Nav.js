@@ -14,6 +14,7 @@ import DropDownMenu from 'material-ui/DropDownMenu'
 import MenuItem from 'material-ui/MenuItem';
 
 import * as actions from 'actions/actions.js';
+import Animation from 'utils/Animation.js';
 
 class Nav extends Component {
   constructor(props) {
@@ -27,6 +28,10 @@ class Nav extends Component {
   buttonStyle = {
     color: '#FFF'
   };
+
+  componentDidMount() {
+    Animation.slideAnimation(this.refs.nav);
+  }
 
   onHomeClicked(event, index, value) {
     this.props.history.push('/home');
@@ -72,7 +77,7 @@ class Nav extends Component {
 
 
     return (
-      <span>
+      <span style={{verticalAlign: 'top'}}>
         {
           loggedIn
           ?
@@ -117,7 +122,7 @@ class Nav extends Component {
     }
 
     return (
-      <div>
+      <div ref="nav">
         <AppBar
           title={false}
           titleStyle={{display: 'none'}}

@@ -9,7 +9,7 @@ mongo
 FEATURES MVP V1 - TODO
   * View word/phrase (page)
     - As logged in user -> comment
-  * Bottom bar
+  * responsive
   * About page
   * Contact / suggestion / question
   * Brand??
@@ -17,6 +17,7 @@ FEATURES MVP V1 - TODO
     - reserve twitter
     - reserve FB
   * deploy on aws
+  * Update facebook app kaiwalife -> new
 
 MVP BUGS
   * Duplicate words
@@ -52,6 +53,7 @@ FEATURES V1 DONE!
     - update nickname
     - View words added by user
   * Loading animation
+  * Bottom bar
 
 FEATURES V1.01
   * User

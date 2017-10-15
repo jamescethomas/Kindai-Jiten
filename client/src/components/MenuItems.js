@@ -30,10 +30,14 @@ class MenuItems extends Component {
     delete iconMenuProps.history
     delete iconMenuProps.staticContext
 
+    const iconStyle = {
+      color: "#FFF"
+    }
+
     return (
       <IconMenu
-        className="menu"
-        iconStyle={{color: "#FFF"}}
+        style={{verticalAlign: 'top'}}
+        iconStyle={iconStyle}
         iconButtonElement={
           <IconButton><MoreVertIcon/></IconButton>
         }
