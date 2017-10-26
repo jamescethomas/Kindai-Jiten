@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchDroplist from 'components/Search/SearchDroplist.js';
 import { withRouter } from 'react-router-dom';
+import _ from 'lodash';
 
 class Search extends Component {
   constructor(props) {
@@ -39,6 +40,7 @@ class Search extends Component {
     });
 
     if (value.length) {
+    // if (value.length && _.trim(value).length) {
       fetch('/searchWords?searchTerm=' + value)
         .then(res => res.json())
         .then(body => {

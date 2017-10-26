@@ -236,6 +236,7 @@ function mapStateToProps (state) {
   }
 
   props.loggedIn = state.user.loggedIn
+  props.language = state.language
 
   return props;
 }

@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Strings from 'react-l20n-u';
+import _ from 'lodash';
 
 import MenuItems from './MenuItems.js';
 import Search from 'components/Search/Search.js';
@@ -12,6 +13,12 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import DropDownMenu from 'material-ui/DropDownMenu'
 import MenuItem from 'material-ui/MenuItem';
+
+// Responsiveness
+import { DesktopBreakpoint } from 'utils/Responsive.js';
+import { DesktopTabletBreakpoint } from 'utils/Responsive.js';
+import { TabletBreakpoint } from 'utils/Responsive.js';
+import { PhoneBreakpoint } from 'utils/Responsive.js';
 
 import * as actions from 'actions/actions.js';
 import Animation from 'utils/Animation.js';
@@ -77,11 +84,11 @@ class Nav extends Component {
 
 
     return (
-      <span style={{verticalAlign: 'top'}}>
+      <span>
         {
           loggedIn
           ?
-            <MenuItems />
+            <span />
           :
           <span style={buttonStyles}>
             <FlatButton
@@ -121,12 +128,15 @@ class Nav extends Component {
       display: 'block'
     }
 
+    var navClassName = "nav-bar";
+    var menuStyle = (this.props.loggedIn) ? {marginLeft: '10px'}: {};
+
     return (
       <div ref="nav">
         <AppBar
           title={false}
           titleStyle={{display: 'none'}}
-          className="nav-bar"
+          className={navClassName}
           showMenuIconButton={false}
           style={{display: 'block'}}
         >
@@ -141,33 +151,36 @@ class Nav extends Component {
 
           <span style={{float: 'right', height: '56px'}}>
             <span style={buttonStyles}>
-              <FlatButton
-                style={buttonStyle}
-                label={Strings.get('about')}
-                onClick={this.onAboutClicked.bind(this)}
-              />
+              <DesktopTabletBreakpoint>
+                <FlatButton
+                  style={buttonStyle}
+                  label={Strings.get('about')}
+                  onClick={this.onAboutClicked.bind(this)}
+                />
+              </DesktopTabletBreakpoint>
               <RaisedButton
                 style={buttonStyle}
                 secondary={true}
-                label={Strings.get('define')}
+                className="define-button"
+                label={
+                  <span>
+                    <DesktopTabletBreakpoint>
+                      {Strings.get('define')}
+                    </DesktopTabletBreakpoint>
+                    <PhoneBreakpoint>
+                      {Strings.get('define-short')}
+                    </PhoneBreakpoint>
+                  </span>
+                }
                 onClick={this.onDefineClicked.bind(this)}
               />
+              {this.renderLoginButtom(this.props.loggedIn)}
+              <span style={menuStyle}>
+                <MenuItems />
+              </span>
             </span>
-            <span>
-              <DropDownMenu
-                labelStyle={{color: "#FFF"}}
-                value={value}
-                onChange={this.onDropdownChange.bind(this)}
-                style={{width: 140}}
-                autoWidth={false}
-              >
-                <MenuItem value={0} primaryText={Strings.get('en')} />
-                <MenuItem value={1} primaryText={Strings.get('jp')} />
-              </DropDownMenu>
-            </span>
-            {this.renderLoginButtom(this.props.loggedIn)}
           </span>
-          <span style={searchStyle}>
+          <span style={searchStyle} className="search-bar-container">
             <Search/>
           </span>
         </div>

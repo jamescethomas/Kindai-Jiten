@@ -101,11 +101,10 @@ class Author extends Component {
     }
 
     const paperStlye = {
-      width: 600,
-      marginTop: 20,
+      maxWidth: 600,
+      margin: '20px auto 0',
       padding: 20,
       textAlign: 'left',
-      display: 'inline-block',
       backgroundColor: 'rgb(0, 188, 212)',
       color: '#fff',
       fontSize: '20px'

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import _ from 'lodash';
 
 // Material UI
@@ -7,10 +9,12 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-//
+// Custom
 import App from 'App.js';
 import ExampleList from './ExampleList.js';
 import FormHeader from 'components/FormHeader.js';
+import ErrorMessage from 'components/ErrorMessage.js';
+import GenericDialog from 'components/GenericDialog.js';
 
 import Strings from 'react-l20n-u';
 
@@ -18,6 +22,8 @@ class DefinitionForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      disableSubmit: false,
+
       word: '',
       definition: '',
       examples: [
@@ -33,11 +39,10 @@ class DefinitionForm extends Component {
     };
 
     this.style = {
-      width: 600,
-      margin: 20,
+      maxWidth: 600,
+      margin: '20px auto',
       padding: 20,
-      textAlign: 'center',
-      display: 'inline-block',
+      textAlign: 'center'
     }
   }
 
@@ -124,6 +129,10 @@ class DefinitionForm extends Component {
     });
   }
 
+  onDuplicateLinkClick() {
+    this.props.history.push('/word/' + encodeURI(this.state.word));
+  }
+
   onSubmitClick() {
     var wordError = '',
         definitionError = '',
@@ -131,6 +140,12 @@ class DefinitionForm extends Component {
         hasError = false;
     // TODO do some validation
     // TODO If valiation success disable the form
+
+    this.setState((prevState) => {
+      return {
+        disableSubmit: true
+      }
+    });
 
     if (this.state.word === '') {
       hasError = true;
@@ -150,7 +165,8 @@ class DefinitionForm extends Component {
         return {
           wordError,
           definitionError,
-          exampleError
+          exampleError,
+          disableSubmit: false
         }
       })
     } else {
@@ -159,9 +175,42 @@ class DefinitionForm extends Component {
       word.definition = this.state.definition;
       word.examples = this.state.examples;
       word.dateAdded = new Date();
-      this.props.submit(word);
+      this.submit(word);
     }
   };
+
+  submit(data) {
+    // Associate the user id with the word data if the user is logged in
+    if (this.props.user && this.props.user.loggedIn) {
+      data.userid = this.props.user.data.user.userid;
+    }
+
+    fetch('/addWord', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data)
+    })
+    .then((response) => {
+      if (response.status === 201) {
+        this.props.history.push('/home');
+      } else if (response.status === 409) {
+        // Show conflict diloag
+        this.refs.conflictDialog.openDialog();
+      } else {
+        // Show error dialog
+        this.refs.errorMessage.openErrorDialog();
+      }
+
+      this.setState((prevState) => {
+        return {
+          disableSubmit: false
+        }
+      });
+    });
+  }
 
   render() {
     return (
@@ -212,12 +261,29 @@ class DefinitionForm extends Component {
               label={Strings.get('submit-definition')}
               primary={true}
               onClick={this.onSubmitClick.bind(this)}
+              disabled={this.state.disableSubmit}
             />
           </Paper>
+          <ErrorMessage ref='errorMessage' />
+          <GenericDialog
+            ref='conflictDialog'
+            title={Strings.getRaw('duplicate-error-title')}
+            message={Strings.getRaw('duplicate-error-message')}
+            link={this.state.word}
+            onLinkClickCallback={this.onDuplicateLinkClick.bind(this)}
+          />
         </div>
       </MuiThemeProvider>
     );
   }
 }
 
-export default DefinitionForm;
+function mapStateToProps (state) {
+  return {
+    user: state.user
+  }
+}
+
+export default withRouter(
+  connect(mapStateToProps, null)(DefinitionForm)
+);

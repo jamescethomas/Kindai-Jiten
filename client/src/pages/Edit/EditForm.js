@@ -34,11 +34,10 @@ class EditForm extends Component {
     };
 
     this.style = {
-      width: 600,
-      margin: 20,
+      maxWidth: 600,
+      margin: '20px auto 0',
       padding: 20,
-      textAlign: 'center',
-      display: 'inline-block',
+      textAlign: 'center'
     }
   }
 

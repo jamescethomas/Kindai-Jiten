@@ -15,6 +15,7 @@ var profile = require('./app/module/profile.js');
 var kuroshiro = require('kuroshiro');
 var dictionary = require('./app/module/dictionary.js');
 var like = require('./app/module/like.js');
+var contact = require('./app/module/contact.js');
 
 var app = express();
 var port = process.env.PORT || 5000;
@@ -71,6 +72,7 @@ var options = {
 app.post('/addWord', dictionary.create);
 app.get('/words', dictionary.readAll);
 app.get('/word/:word', dictionary.read);
+app.post('/contact', contact.sendContactEmail);
 
 // search
 app.get('/searchWords', dictionary.readSearch);

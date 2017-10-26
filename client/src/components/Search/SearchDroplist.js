@@ -91,7 +91,12 @@ class SearchDroplist extends Component {
     }
 
     return(
-      <div style={style} onMouseEnter={this.props.mouseIn} onMouseLeave={this.props.mouseOut}>
+      <div
+        className="search-droplist-container"
+        style={style}
+        onMouseEnter={this.props.mouseIn}
+        onMouseLeave={this.props.mouseOut}
+      >
         <div style={lineStle} />
         {
           this.renderItems()

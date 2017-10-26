@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import _ from 'lodash';
 // import L20n from 'react-l20n-u';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
@@ -27,13 +29,17 @@ class Word extends Component {
     fetch('/word/' + word)
       .then(res => res.json())
       .then(body => {
-        this.setState((prevState) => {
-          return {
-            word: body
-          }
-        });
+        if (_.isEmpty(body)) {
+          this.props.history.push('/home');
+        } else {
+          this.setState((prevState) => {
+            return {
+              word: body
+            }
+          });
 
-        Animation.fadeAnimation(this.refs.word);
+          Animation.fadeAnimation(this.refs.word);
+        }
       });
   }
 
@@ -53,4 +59,4 @@ class Word extends Component {
   }
 }
 
-export default Word;
+export default withRouter(Word);

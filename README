@@ -1,4 +1,4 @@
-URBANJISHO
+KINDAI JITEN
 Japanese slang/expression dictionary written by and for users
 
 TECH STACK
@@ -11,17 +11,13 @@ FEATURES MVP V1 - TODO
     - As logged in user -> comment
   * responsive
   * About page
-  * Contact / suggestion / question
   * Brand??
-    - domain !
     - reserve twitter
     - reserve FB
   * deploy on aws
   * Update facebook app kaiwalife -> new
 
 MVP BUGS
-  * Duplicate words
-  * type space in search bar
 
 FEATURES V1 DONE!
   * Nav bar
@@ -53,7 +49,17 @@ FEATURES V1 DONE!
     - update nickname
     - View words added by user
   * Loading animation
+  * Contact / suggestion / question
   * Bottom bar
+  * Brand??
+    - domain - KindaiJiten.com
+
+BUGS DONE!
+  * type space in search bar
+  * Duplicate words
+
+V1.01 BUGS
+  * Duplicate words no case sensitive
 
 FEATURES V1.01
   * User

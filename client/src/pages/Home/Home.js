@@ -8,7 +8,7 @@ import WordsList from 'components/Words/WordsList.js';
 import Paginator from 'components/Paginator.js';
 import Animation from 'utils/Animation.js';
 
-const ITEMS_PER_PAGE = 3;
+const ITEMS_PER_PAGE = 5;
 
 class Home extends Component {
   constructor(props) {

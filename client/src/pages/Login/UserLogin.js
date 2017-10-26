@@ -69,11 +69,10 @@ class UserLogin extends Component {
 
   render() {
     const style = {
-      width: 600,
-      marginTop: 20,
+      maxWidth: 600,
+      margin: '20px auto 0',
       padding: 20,
-      textAlign: 'center',
-      display: 'inline-block'
+      textAlign: 'center'
     }
 
     return (

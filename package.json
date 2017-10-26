@@ -1,7 +1,7 @@
 {
-  "name": "urbanjisho",
+  "name": "kindaijisho",
   "version": "1.0.0",
-  "description": "URBANJISHO Japanese slang/expression dictionary written by and for users",
+  "description": "KINDAIJISHO Japanese slang/expression dictionary written by and for users",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,6 +16,7 @@
     "jwt-simple": "^0.5.1",
     "kuroshiro": "^0.1.5",
     "mongoose": "^4.11.13",
+    "nodemailer": "^4.2.0",
     "password-hash-and-salt": "^0.1.4",
     "wanakana": "^2.3.0"
   }

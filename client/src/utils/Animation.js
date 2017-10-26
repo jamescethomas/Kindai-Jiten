@@ -1,6 +1,6 @@
 module.exports = {
   initFadeAnimation: function (elem, reset) {
-    var reset = (reset) ? true : false;
+    reset = (reset) ? true : false;
 
     if (reset) {
       elem.style.transition = "";
@@ -23,7 +23,20 @@ module.exports = {
   },
 
   slideAnimation: function (elem) {
-    elem.style.transform = "translate(0, -56px)";
+    elem.style.transform = "translate(0, -" + elem.clientHeight + "px)";
+
+    window.requestAnimationFrame(function() {
+      // Now set a transition on the opacity
+      elem.style.transition = "transform 1s";
+      elem.style.webkitTransition = "transform 1s";
+
+      // and set the opacity to 1
+      elem.style.transform = "translate(0, 0)";
+    });
+  },
+
+  slideUpAnimation: function (elem) {
+    elem.style.transform = "translate(0, " + elem.clientHeight + "px)";
 
     window.requestAnimationFrame(function() {
       // Now set a transition on the opacity

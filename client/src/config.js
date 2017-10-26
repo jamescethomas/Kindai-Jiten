@@ -1,3 +1,3 @@
 export default {
-  APP_NAME: 'urbanjisho'
+  APP_NAME: 'kindaijiten'
 };

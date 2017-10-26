@@ -1,26 +1,31 @@
 module.exports =
-`app = urbanjisho
+`app = きんだい辞典
 home-message = HOME!
 en = English
-jp = Japanese
+jp = 日本語
 
 [[Basic]]
 yes =　Yes
 cancel = Cancel
+language = Language
 
 [[nav]]
 home = Home
 about = About
 contact = Contact
-define = Define
+define = Add a word
+define-short = Add a word
 login = Login
 logout = Logout
 
-add-definition = Add a new definition
+[[Define]]
+add-definition = Add a new word or phrase
 word-or-phrase = Word or phrase
 definition = Definition
 example = Example
 submit-definition = Submit definition!
+duplicate-error-title = Duplicate word
+duplicate-error-message = That word has already been added to きんだい辞典. Click on the link to see the entry
 
 word-error = Please enter a word or phrase
 definition-error = Please enter a defintion
@@ -42,7 +47,7 @@ like = Like
 dislike = Dislike
 
 [[Share button]]
-share-message = Check out this word I found on Urbanjisho!
+share-message = Check out this word I found on KindaiJiten!
 
 [[pages/Profile]]
 profile = Profile
@@ -60,4 +65,23 @@ edit-definition = Edit "{ $word }"
 
 [[Bottom Bar]]
 copy-right = © 2017 James Thomas
+
+[[Contact Page]]
+contact-subtext =
+  | If you have a question or comment, or would like to report a problem with the site
+  | please reach out using this contact form
+name = Name
+email = Email
+message = Message
+send = Send
+name-error = Please enter your name
+email-error = Please enter your email address
+message-error = Please enter a message
+contact-success = Message sent
+contact-success-message = Thank you! Your message has been sent successfully
+
+[[Error Message]]
+error-title = An error occurred
+error-message = Please try the action again or report an error on the contact page
+dismiss = Dismiss
 `;

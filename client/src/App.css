@@ -14,6 +14,23 @@ body {
   height: 100%;
 }
 
+/********** FONTS **********/
+@media only screen and (max-width: 767px) {
+  .nav-title {
+    font-size: 15px;
+  }
+
+  .title-text {
+    font-size: 15px;
+  }
+
+  .text {
+    font-size: 10px;
+  }
+}
+/********** END FONTS **********/
+
+.Contact,
 .Define,
 .Home,
 .Word,
@@ -21,15 +38,22 @@ body {
   text-align: center;
 }
 
+/********** NAV **********/
 .nav-title {
   color: white;
   font-size: 24px;
   cursor: pointer;
   float: left;
+  font-family: "Mplus 1p" sans-serif;
 }
 
 .nav-bar .menu {
   top: -20px;
+}
+
+.menu-items > button > div {
+  position: relative;
+  top: 4px;
 }
 
 .search-input {
@@ -73,43 +97,63 @@ body {
   font-size: large;
 }
 
+@media only screen and (min-width: 1025px) {
 
-/*
-.background-image {
-  --cr: #D3D3D3	;
-  background-image:
-  radial-gradient(circle at 100% 150%, var(--cr) 24%, white 25%, white 28%, var(--cr) 29%, var(--cr) 36%, white 36%, white 40%, transparent 40%, transparent),
-  radial-gradient(circle at 0    150%, var(--cr) 24%, white 25%, white 28%, var(--cr) 29%, var(--cr) 36%, white 36%, white 40%, transparent 40%, transparent),
-  radial-gradient(circle at 50%  100%, white 10%, var(--cr) 11%, var(--cr) 23%, white 24%, white 30%, var(--cr) 31%, var(--cr) 43%, white 44%, white 50%, var(--cr) 51%, var(--cr) 63%, white 64%, white 71%, transparent 71%, transparent),
-  radial-gradient(circle at 100% 50%, white 5%, var(--cr) 6%, var(--cr) 15%, white 16%, white 20%, var(--cr) 21%, var(--cr) 30%, white 31%, white 35%, var(--cr) 36%, var(--cr) 45%, white 46%, white 49%, transparent 50%, transparent),
-  radial-gradient(circle at 0    50%, white 5%, var(--cr) 6%, var(--cr) 15%, white 16%, white 20%, var(--cr) 21%, var(--cr) 30%, white 31%, white 35%, var(--cr) 36%, var(--cr) 45%, white 46%, white 49%, transparent 50%, transparent);
-
-
-  background-color:white;
-  /*background-image:
-  radial-gradient(circle at 100% 150%, silver 24%, white 25%, white 28%, silver 29%, silver 36%, white 36%, white 40%, transparent 40%, transparent),
-  radial-gradient(circle at 0    150%, silver 24%, white 25%, white 28%, silver 29%, silver 36%, white 36%, white 40%, transparent 40%, transparent),
-  radial-gradient(circle at 50%  100%, white 10%, silver 11%, silver 23%, white 24%, white 30%, silver 31%, silver 43%, white 44%, white 50%, silver 51%, silver 63%, white 64%, white 71%, transparent 71%, transparent),
-  radial-gradient(circle at 100% 50%, white 5%, silver 6%, silver 15%, white 16%, white 20%, silver 21%, silver 30%, white 31%, white 35%, silver 36%, silver 45%, white 46%, white 49%, transparent 50%, transparent),
-  radial-gradient(circle at 0    50%, white 5%, silver 6%, silver 15%, white 16%, white 20%, silver 21%, silver 30%, white 31%, white 35%, silver 36%, silver 45%, white 46%, white 49%, transparent 50%, transparent);*/
-/*
-  background-size:50px 25px;
-
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-background-position: center center;
-width: 105%;
-height: 180vh;
-opacity: 0.1;
-left: -10px;
-top: -70vh;
-position: fixed;
-right: 0;
-overflow: hidden;
-z-index: -2;
 }
-*/
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+}
+
+@media only screen and (max-width: 767px) {
+  .nav-title {
+    font-size: 20px;
+  }
+
+  .nav-bar {
+    height: 112px;
+    padding-left: 10px !important;
+    padding-right: 12px !important;
+  }
+
+  .nav-bar.logged-in .define-button {
+    margin-right: 10px;
+  }
+
+  .menu-items {
+    width: 21px;
+  }
+
+  .menu-items > button {
+    padding: 0 !important;
+    width: 21px !important;
+  }
+
+  .search-bar-container {
+    width: 100%;
+    margin: auto !important;
+  }
+
+  .search-bar-container > span {
+    width: 100% !important;
+    line-height: normal;
+    display: flex;
+  }
+
+  .search-input {
+    /* width: calc(100% - 14px) !important; */
+    margin: 0 !important;
+    flex: 1;
+  }
+
+  .search-droplist-container {
+    left: 0px !important;
+    top: 40px !important;
+    /* width: calc(100% + 3px) !important; **/
+    width: calc(100% - 2px) !important;
+  }
+}
+/********** END NAV ***********/
 
 .background-image-gradient {
   /* background: linear-gradient(45deg, rgba(255, 64, 129, 0.5) 10%, #2cb5e8 75%), no-repeat; */
