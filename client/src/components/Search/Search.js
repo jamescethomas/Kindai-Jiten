@@ -39,8 +39,7 @@ class Search extends Component {
       }
     });
 
-    if (value.length) {
-    // if (value.length && _.trim(value).length) {
+    if (value.length && _.trim(value).length) {
       fetch('/searchWords?searchTerm=' + value)
         .then(res => res.json())
         .then(body => {

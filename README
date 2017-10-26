@@ -9,7 +9,6 @@ mongo
 FEATURES MVP V1 - TODO
   * View word/phrase (page)
     - As logged in user -> comment
-  * responsive
   * About page
   * Brand??
     - reserve twitter
@@ -18,6 +17,7 @@ FEATURES MVP V1 - TODO
   * Update facebook app kaiwalife -> new
 
 MVP BUGS
+Share buttson cover search bar
 
 FEATURES V1 DONE!
   * Nav bar
@@ -53,6 +53,7 @@ FEATURES V1 DONE!
   * Bottom bar
   * Brand??
     - domain - KindaiJiten.com
+  * responsive
 
 BUGS DONE!
   * type space in search bar
