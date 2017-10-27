@@ -84,4 +84,10 @@ contact-success-message = Thank you! Your message has been sent successfully
 error-title = An error occurred
 error-message = Please try the action again or report an error on the contact page
 dismiss = Dismiss
+
+[[Comment]]
+comment = Comment
+comment-too-long-error = The max comment length is 200 characters
+no-comment-error = Please enter a comment
+add-comment = Add a comment
 `;

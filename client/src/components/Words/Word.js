@@ -12,8 +12,26 @@ import AdminControls from 'components/Words/AdminControls.js';
 import AuthorControls from 'components/Words/AuthorControls.js';
 import ShareButtons from 'components/ShareButtons.js';
 import Like from 'components/Like.js';
+import CommentButton from 'components/Comment/CommentButton.js';
+import AddComment from 'components/Comment/AddComment.js';
 
 class Word extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      addingComment: false
+    }
+  }
+
+  onAddCommentClick() {
+    this.setState((prevState) => {
+      return {
+        addingComment: !prevState.addingComment
+      }
+    });
+  }
+
   render() {
     const style = {
       maxWidth: 600,
@@ -48,10 +66,14 @@ class Word extends Component {
             wordId={this.props.wordId}
             word={this.props.word}
           />
+          <CommentButton
+            addCommentCallback={this.onAddCommentClick.bind(this)}
+          />
           <ShareButtons
             word={this.props.word}
           />
-        </Paper>
+          <AddComment show={this.state.addingComment} />
+         </Paper>
       </div>
     );
   }

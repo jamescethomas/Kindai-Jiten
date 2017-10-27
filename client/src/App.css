@@ -189,17 +189,20 @@ body {
   color: #106c8f;
 }
 
+.comment .message,
 .like .message,
 .dislike .message {
   text-decoration: underline;
 }
 
+.comment-button,
 .like-button,
 .dislike-button {
   color: gray;
   transition: color 0.2s ease;
 }
 
+.comment-button:hover,
 .like-button:hover,
 .dislike-button:hover {
   cursor: pointer;
@@ -209,6 +212,11 @@ body {
 .like {
   margin-right: 10px;
   color: black;
+  user-select: none; /* Standard */
+}
+
+.comment {
+  margin-left: 10px;
   user-select: none; /* Standard */
 }
 

@@ -82,4 +82,10 @@ contact-success-message = ありがとうございました！メッセージは
 error-title = エラーが発生しました
 error-message = アクションを再試行するか、連絡先ページでエラーを報告してください
 dismiss = 閉じる
+
+[[Comment]]
+comment = コメント
+comment-too-long-error = 最大コメント長は200文字です
+no-comment-error = コメントを入力してください
+add-comment = コメントする
 `;
