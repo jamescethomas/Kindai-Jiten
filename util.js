@@ -2,6 +2,9 @@
 var HttpStatus = require('http-status-codes');
 var mongoose = require('mongoose');
 
+var counterSchema = require('./app/schema/counterSchema.js');
+var CounterModel = mongoose.model('counters', counterSchema);
+
 var util = {
     returnError: function (res, err) {
         console.log(err);
@@ -31,7 +34,20 @@ var util = {
             { $inc: { seq: 1 } },
             function (err, counters) {
                 if (err) throw err;
-                callback(counters.seq);
+                if (!counters) {
+                  var counterData = {
+                    _id: name,
+                    seq: 0
+                  };
+                  var newCounter = new CounterModel(counterData);
+
+                  newCounter.save(function (err, counters) {
+                    if (err) throw err;
+                    callback(counters.seq);
+                  });
+                } else {
+                  callback(counters.seq);
+                }
             }
        );
     }

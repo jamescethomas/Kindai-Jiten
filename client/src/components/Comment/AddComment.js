@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -56,8 +57,27 @@ class AddComment extends Component {
     }
 
     if (!hasError) {
+      var postBody = {
+        wordId: this.props.wordId,
+        comment: this.state.comment,
+        timestamp: new Date()
+      };
+
       // TODO
       // Handle the submit
+      fetch('/api/comment', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'x-access-token': this.props.token
+        },
+        body: JSON.stringify(postBody)
+      })
+      .then(res => res.json())
+      .then(body => {
+        console.log(body);
+      });
     } else {
       this.setState((prevState) => {
         var newState = {
@@ -110,4 +130,14 @@ class AddComment extends Component {
   }
 }
 
-export default AddComment;
+function mapStateToProps (state) {
+  var props = {};
+
+  if (state.user && state.user.loggedIn) {
+    props.token = state.user.data.token;
+  }
+
+  return props;
+}
+
+export default connect(mapStateToProps, null)(AddComment);

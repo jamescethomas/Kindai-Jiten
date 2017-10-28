@@ -16,6 +16,7 @@ var kuroshiro = require('kuroshiro');
 var dictionary = require('./app/module/dictionary.js');
 var like = require('./app/module/like.js');
 var contact = require('./app/module/contact.js');
+var comment = require('./app/module/comment.js');
 
 var app = express();
 var port = process.env.PORT || 5000;
@@ -90,6 +91,7 @@ app.post('/api/deleteWord', dictionary.delete);
 app.post('/api/edit', dictionary.edit);
 app.post('/api/like', like.like);
 app.get('/likes', like.fetchLikes);
+app.post('/api/comment', comment.comment);
 
 // profile api mappings
 app.get('/api/profile/:userid', profile.read);

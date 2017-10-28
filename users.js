@@ -24,13 +24,6 @@ var userSchema = new Schema({
 
 var UserModel = mongoose.model('users', userSchema);
 
-var counterSchema = new Schema({
-    _id: String,
-    seq: Number
-});
-
-mongoose.model('counters', counterSchema);
-
 /**
  * Responsed with an error status
  *

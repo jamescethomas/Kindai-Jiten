@@ -22,14 +22,14 @@ var comment = {
       data.wordId = req.body.wordId;
     }
     if (req.body.comment) {
-      comment = req.body.like;
+      comment = req.body.comment;
     }
     if (req.body.timestamp) {
       timestamp = req.body.timestamp;
     }
 
     conditions = data;
-    function getCommentState() {
+    function getCommentState(callback) {
       mongoose.model('words').find(conditions, function (err, words) {
         if (err || words.length !== 1) {
           util.returnError();
@@ -41,10 +41,10 @@ var comment = {
     }
 
     function updateCommentState(commentData, callback) {
-      utils.getNextSequence('commentId', function (commentId) {
+      util.getNextSequence('commentId', function (commentId) {
         var newComment = {
           commentId: commentId,
-          userId: userid,
+          userid: userid,
           comment: comment,
           timestamp: timestamp
         };
@@ -52,12 +52,10 @@ var comment = {
         if (commentData) {
           update = {
             $inc: {
-                    "commentData.totalComments": 1,
+                    "commentData.totalComments": 1
                   },
             $push: {
-                    "commentData.comments": {
-                      newComment
-                    }
+                    "commentData.comments": newComment
                   }
           }
         } else {
@@ -77,7 +75,7 @@ var comment = {
             util.returnError(res);
             return;
           } else {
-            fetchComments(data.wordId, function (commentData, err) {
+            fetchComments(conditions, data.wordId, function (commentData, err) {
               if (err) {
                 util.returnError(res);
                 return;
@@ -99,57 +97,57 @@ var comment = {
         updateCommentState
       ]
     );
-  },
+  }
+};
 
-  fetchComments: function(wordId, callback) {
-    var comments = {}
+function fetchComments (conditions, wordId, callback) {
+  var comments = {}
 
-    mongoose.model('words').findOne(conditions, function (err, word) {
-      if (err) {
-        callback(comments, err);
-      } else {
-        if (word.commentData && word.commentData.comments.length > 0) {
-          var userids = [];
-          word.commentData.comments.forEach(function (comment) {
-            if (comment.userid) {
-              userids.push(comment.userid)
+  mongoose.model('words').findOne(conditions, function (err, word) {
+    if (err) {
+      callback(comments, err);
+    } else {
+      if (word.commentData && word.commentData.comments.length > 0) {
+        var userids = [];
+        word.commentData.comments.forEach(function (comment) {
+          if (comment.userid) {
+            userids.push(comment.userid)
+          }
+        });
+
+        mongoose.model('users').find({userid: {$in: userids}}, function (err, users) {
+          var mappedUsers = {};
+          users.forEach(function (user) {
+            mappedUsers[user.userid] = {
+              firstName: user.firstName || '',
+              lastName: user.lastName || '',
+              userName: user.userName || ''
             }
           });
 
-          mongoose.model('users').find({userid: {$in: userids}}, function (err, users) {
-            var mappedUsers = {};
-            users.forEach(function (user) {
-              mappedUsers[user.userid] = {
-                firstName: user.firstName || '',
-                lastName: user.lastName || '',
-                userName: user.userName || ''
-              }
-            });
+          var mappedComments = [];
+          word.commentData.comments.forEach(function (comment) {
+            var data = {
+              timestamp: comment.timestamp,
+              comment: comment.comment,
+              commentId: comment.commentId
+            }
 
-            var mappedComments = [];
-            word.commentData.comments.forEach(function (comment) {
-              var data = {
-                timestamp: comment.timestamp,
-                comment: comment.comment,
-                commentId: comment.commentId
-              }
+            data.user = mappedUsers[comment.userid];
+            data.user.userid = comment.userid;
 
-              data.user = mappedUsers[comment.userid]
-              data.user.userid = comment.userid
-
-              mappedComments.push(data);
-            });
-
-            word.commentData.comments = mappedComments;
-
-            callback(word.commentData);
+            mappedComments.push(data);
           });
-        } else {
-          callback(comments);
-        }
+
+          word.commentData.comments = mappedComments;
+
+          callback(word.commentData);
+        });
+      } else {
+        callback(comments);
       }
-    });
-  }
-};
+    }
+  });
+}
 
 module.exports = comment;

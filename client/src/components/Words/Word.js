@@ -72,7 +72,10 @@ class Word extends Component {
           <ShareButtons
             word={this.props.word}
           />
-          <AddComment show={this.state.addingComment} />
+          <AddComment
+            show={this.state.addingComment}
+            wordId={this.props.wordId}
+          />
          </Paper>
       </div>
     );

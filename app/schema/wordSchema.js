@@ -9,7 +9,8 @@ var wordSchema = new Schema({
   word: String,
   definition: String,
   examples: Array,
-  likeData: Object
+  likeData: Object,
+  commentData: Object
 });
 
 module.exports = wordSchema;
