@@ -97,7 +97,73 @@ var comment = {
         updateCommentState
       ]
     );
-  }
+  },
+
+  fetchComments: function (req, res) {
+    var data = {};
+
+    if (req.query.wordId) {
+      data.wordId = req.query.wordId;
+    }
+
+    fetchComments(data, data.wordId, function (commentData, err) {
+      if (err) {
+        util.returnError(res);
+      } else {
+        res.status(HttpStatus.OK);
+        res.json(commentData);
+      }
+    });
+  },
+
+  delete: function (req, res) {
+    var userid = req.user.userid,
+        wordId = req.body.wordId,
+        commentId = req.body.commentId,
+        condition,
+        update;
+
+    condition = {
+      wordId: wordId
+    };
+
+    console.log(condition);
+
+    mongoose.model('words').find(condition, function (err, words) {
+      if (err || words.length !== 1) {
+        util.returnError(res, err);
+        return;
+      }
+
+      update = {
+        $inc: {
+                "commentData.totalComments": -1
+              },
+        $pull: {
+                "commentData.comments": {
+                  commentId,
+                  userid
+                }
+              }
+      }
+
+      mongoose.model('words').update(condition, update, function (err) {
+        if (err) {
+          util.returnError(res, err);
+          return;
+        }
+
+        fetchComments(condition, condition.wordId, function (commentData, err) {
+          if (err) {
+            util.returnError(res);
+          } else {
+            res.status(HttpStatus.OK);
+            res.json(commentData);
+          }
+        });
+      })
+    });
+  },
 };
 
 function fetchComments (conditions, wordId, callback) {

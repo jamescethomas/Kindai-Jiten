@@ -189,6 +189,18 @@ body {
   color: #106c8f;
 }
 
+.link.no-underline {
+  text-decoration: none;
+}
+
+.link.no-color {
+  color: gray;
+}
+
+.link.no-color:hover {
+  color: lightgray;
+}
+
 .comment .message,
 .like .message,
 .dislike .message {

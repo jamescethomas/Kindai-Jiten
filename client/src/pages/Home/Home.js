@@ -55,13 +55,13 @@ class Home extends Component {
 
         // Fade in the content
         Animation.fadeAnimation(this.refs.home);
+        window.scrollTo(0, 1);
       });
   }
 
   onPageChange(page) {
     this.props.history.push('/home/page/' + page);
     this.getWords(page);
-    window.scrollTo(0, 1);
   }
 
   render() {

@@ -91,7 +91,11 @@ app.post('/api/deleteWord', dictionary.delete);
 app.post('/api/edit', dictionary.edit);
 app.post('/api/like', like.like);
 app.get('/likes', like.fetchLikes);
+
+// Comments
 app.post('/api/comment', comment.comment);
+app.post('/api/deleteComment', comment.delete);
+app.get('/comments', comment.fetchComments);
 
 // profile api mappings
 app.get('/api/profile/:userid', profile.read);

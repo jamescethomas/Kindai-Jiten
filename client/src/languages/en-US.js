@@ -90,4 +90,7 @@ comment = Comment
 comment-too-long-error = The max comment length is 200 characters
 no-comment-error = Please enter a comment
 add-comment = Add a comment
+comment-author = { $name }
+see-more-comments = See more comments ...
+confirm-delete-comment = Are you sure you want to delete your comment?
 `;

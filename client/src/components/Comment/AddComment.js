@@ -76,7 +76,13 @@ class AddComment extends Component {
       })
       .then(res => res.json())
       .then(body => {
-        console.log(body);
+        this.props.callback(body);
+        this.setState((prevState) => {
+          return {
+            disableSubmit: false,
+            comment: ''
+          }
+        });
       });
     } else {
       this.setState((prevState) => {
@@ -105,7 +111,7 @@ class AddComment extends Component {
 
     return(
       <MuiThemeProvider muiTheme={App.myTheme}>
-        <div style={style}>
+        <div style={style} className={"add-comment-" + this.props.wordId}>
           <Line />
           <TextField
             style={{textAlign: 'left'}}

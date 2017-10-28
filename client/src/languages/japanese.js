@@ -88,4 +88,7 @@ comment = コメント
 comment-too-long-error = 最大コメント長は200文字です
 no-comment-error = コメントを入力してください
 add-comment = コメントする
+comment-author = { $name }さん
+see-more-comments = もっとコメンを見る
+confirm-delete-comment = コメントを削除してもよろしいですか？
 `;
