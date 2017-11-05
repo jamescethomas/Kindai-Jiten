@@ -57,7 +57,7 @@ var word = {
     }
 
     function addWord () {
-      getNextSequence('wordId', function (wordId) {
+      util.getNextSequence('wordId', function (wordId) {
         wordData.wordId = wordId;
         wordData.reading = wanakana.toHiragana(kuroshiro.toHiragana(wordData.word));
 
@@ -415,29 +415,6 @@ var word = {
       ]
     );
   }
-}
-
-/**
- * Get the next wordId
- *
- * @param string name - the name of the sequence
- * @param function callback
- */
-function getNextSequence(name, callback) {
-   mongoose.model('counters').findOneAndUpdate(
-        {
-            _id: name
-        },
-        { $inc: { seq: 1 } },
-        { new: true },
-        function (err, counters) {
-            if (err) {
-              throw err;
-            } else {
-              callback(counters.seq);
-            }
-        }
-   );
 }
 
 module.exports = word;

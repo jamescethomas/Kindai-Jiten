@@ -19,7 +19,7 @@ var contact = require('./app/module/contact.js');
 var comment = require('./app/module/comment.js');
 
 var app = express();
-var port = process.env.PORT || 5000;
+var port = process.env.PORT || 80;
 
 var DBPathLocal = "mongodb://localhost:27017/kindaijiten"
 var DBPathProd = "mongodb://18.216.128.26:27017/kindaijiten"

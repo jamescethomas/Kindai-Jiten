@@ -81,7 +81,7 @@ var users = {
                     returnConfictError(res, err);
                     return;
                 } else {
-                    getNextSequence('userid', function (nextId) {
+                    util.getNextSequence('userid', function (nextId) {
                         var newUser = new UserModel({
                             userid: nextId,
                             firstName: req.body.firstName,
@@ -184,7 +184,7 @@ var users = {
                 } else {
                     if (users.length === 0) {
                         // create new user
-                        getNextSequence('userid', function (nextId) {
+                        util.getNextSequence('userid', function (nextId) {
 
                             var newUser = new UserModel({
                                 userid: nextId,
@@ -325,25 +325,6 @@ var users = {
             return;
         });
     }
-}
-
-/**
- * Get the next userId
- *
- * @param string name - the name of the sequence
- * @param function callback
- */
-function getNextSequence(name, callback) {
-   mongoose.model('counters').findOneAndUpdate(
-        {
-            _id: name
-        },
-        { $inc: { seq: 1 } },
-        function (err, counters) {
-            if (err) throw err;
-            callback(counters.seq);
-        }
-   );
 }
 
 module.exports = users;
