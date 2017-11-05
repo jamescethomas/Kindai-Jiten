@@ -12,7 +12,6 @@
     "react-dom": "^16.0.0",
     "react-facebook-login": "^3.6.2",
     "react-fontawesome": "^1.6.1",
-    "react-https-redirect": "^1.0.9",
     "react-l20n-u": "0.0.17",
     "react-redux": "^5.0.6",
     "react-responsive": "^3.0.0",

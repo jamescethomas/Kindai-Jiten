@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { Switch, Route } from 'react-router-dom'
-import HttpsRedirect from 'react-https-redirect';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -57,34 +56,32 @@ class App extends Component {
 
     return (
       <div className="App">
-        <HttpsRedirect>
-          <div className="background-image"/>
-          <div className="background-image-gradient"/>
-          <MuiThemeProvider muiTheme={this.myTheme}>
-            <div>
-              <Nav />
-            </div>
-          </MuiThemeProvider>
-          <div className="app-body">
-            <Switch>
-              <Route exact path='/' component={Home}/>
-              <Route path='/home/page/:page' component={Home}/>
-              <Route path='/login' component={Login}/>
-              <Route path='/profile' component={Profile}/>
-              <Route path='/about' component={About}/>
-              <Route path='/contact' component={Contact}/>
-              <Route path='/define' component={Define}/>
-              <Route path='/word/:word' component={Word}/>
-              <Route path='/edit/:word' component={Edit}/>
-              <Route path='/author/:userid/page/:page' component={Author}/>
-              <Route path='/author/:userid' component={Author}/>
-              <Route component={Home}/>
-            </Switch>
-          </div>
+        <div className="background-image"/>
+        <div className="background-image-gradient"/>
+        <MuiThemeProvider muiTheme={this.myTheme}>
           <div>
-            <BottomBar />
+            <Nav />
           </div>
-        </HttpsRedirect>
+        </MuiThemeProvider>
+        <div className="app-body">
+          <Switch>
+            <Route exact path='/' component={Home}/>
+            <Route path='/home/page/:page' component={Home}/>
+            <Route path='/login' component={Login}/>
+            <Route path='/profile' component={Profile}/>
+            <Route path='/about' component={About}/>
+            <Route path='/contact' component={Contact}/>
+            <Route path='/define' component={Define}/>
+            <Route path='/word/:word' component={Word}/>
+            <Route path='/edit/:word' component={Edit}/>
+            <Route path='/author/:userid/page/:page' component={Author}/>
+            <Route path='/author/:userid' component={Author}/>
+            <Route component={Home}/>
+          </Switch>
+        </div>
+        <div>
+          <BottomBar />
+        </div>
       </div>
     );
   }
