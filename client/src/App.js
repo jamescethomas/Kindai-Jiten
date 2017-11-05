@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { Switch, Route } from 'react-router-dom'
+import HttpsRedirect from 'react-https-redirect';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -56,6 +57,7 @@ class App extends Component {
 
     return (
       <div className="App">
+        <HttpsRedirect>
           <div className="background-image"/>
           <div className="background-image-gradient"/>
           <MuiThemeProvider muiTheme={this.myTheme}>
@@ -82,6 +84,7 @@ class App extends Component {
           <div>
             <BottomBar />
           </div>
+        </HttpsRedirect>
       </div>
     );
   }
