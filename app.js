@@ -40,6 +40,13 @@ mongoose.connect(DBPathLocal);
 // Init kuroshiro for japanese text conversions
 kuroshiro.init();
 
+app.use(function(req, res, next) {
+  if(!req.secure) {
+    return res.redirect(['https://', req.get('Host'), req.url].join(''));
+  }
+  next();
+});
+
 app.use(express.static(clientDir));
 
 app.use(bodyParser.json());
@@ -74,7 +81,7 @@ if (env === 'production') {
   options.cert = fs.readFileSync('key-cert.pem');
 }
 
-https.createServer(options, app).listen(8081);
+https.createServer(options, app).listen(443);
 
 // non-auth api
 app.post('/addWord', dictionary.create);
