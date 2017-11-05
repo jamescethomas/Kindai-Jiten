@@ -41,7 +41,7 @@ kuroshiro.init();
 //     pathRoot: path.join(__dirname, 'public')
 // }));
 
-app.use("/", express.static(clientDir));
+app.use(express.static(clientDir));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
