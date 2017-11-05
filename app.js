@@ -107,3 +107,7 @@ app.post('/api/profile/cancel', profile.cancelUpdate);
 
 app.post('/api/profile/uploadProfilePicture', profile.saveProfilePicture);
 app.get('/api/profile/image/:userid', profile.getProfilePictureUrl);
+
+app.get('/*', function(req, res){
+  res.sendFile(clientDir + '/index.html');
+});
