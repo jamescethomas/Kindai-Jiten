@@ -7,10 +7,9 @@ nodejs
 mongo
 
 FEATURES MVP V1 - TODO
-  * View word/phrase (page)
-    - As logged in user -> comment
-  * About page
-    - link to contact page
+  * Comment
+    - Edit
+    - Update sharing button
   * Brand??
     - reserve twitter
     - reserve FB
@@ -55,6 +54,11 @@ FEATURES V1 DONE!
   * Brand??
     - domain - KindaiJiten.com
   * responsive
+  * Commenting
+    - Adding
+    - Deleting
+  * About page
+    - link to contact page
 
 BUGS DONE!
   * type space in search bar
@@ -69,6 +73,8 @@ FEATURES V1.01
     - Show furigana setting
   * Words
     - As admin -> Edit word
+  * Comment
+    - As admin -> delete comment
   * DEFINE (page)
     - English ?
     - reading ?

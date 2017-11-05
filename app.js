@@ -24,6 +24,8 @@ var port = process.env.PORT || 5000;
 var DBPathLocal = "mongodb://localhost:27017/urbanjisho"
 var DBPathProd = "mongodb://james:mongojames1@ds047752.mongolab.com:47752/heroku_wf7xgb1q"
 
+var clientDir = path.resolve(__dirname, 'client/build');
+
 if (!process.env.PORT) {
     mongoose.useMongoClient = DBPathLocal;
 } else {
@@ -39,7 +41,8 @@ kuroshiro.init();
 //     pathRoot: path.join(__dirname, 'public')
 // }));
 
-app.use(express.static(__dirname + '/public'));
+app.use("/", express.static(clientDir));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
@@ -67,7 +70,7 @@ var options = {
     cert: fs.readFileSync('key-cert.pem')
 };
 
-// https.createServer(options, app).listen(8081);
+https.createServer(options, app).listen(8081);
 
 // non-auth api
 app.post('/addWord', dictionary.create);
@@ -104,75 +107,3 @@ app.post('/api/profile/cancel', profile.cancelUpdate);
 
 app.post('/api/profile/uploadProfilePicture', profile.saveProfilePicture);
 app.get('/api/profile/image/:userid', profile.getProfilePictureUrl);
-
-// CREATE
-app.post('/users', function(req, res) {
-    var user;
-    console.log("POST: ");
-    console.log(req.body);
-    user = new UserModel({
-        name: req.body.name
-    });
-    user.save(function(err) {
-        if (!err) {
-            console.log("created");
-            return res.send("created");
-        } else {
-            console.log(err);
-            return res.send("not created");
-        }
-    });
-});
-
-// READ
-app.get('/users', function(req, res) {
-    mongoose.model('users').find({}, function(err, users) {
-        if (!err) {
-            return res.send(users);
-        } else {
-            return console.log(err);
-        }
-    });
-});
-
-// UPDATE
-app.post('/updateUser', function(req, res) {
-    console.log(req.body);
-    var oldName = req.body.oldName;
-    var newName = req.body.newName;
-    mongoose.model('users').update({
-            name: oldName
-        }, {
-            name: newName
-        },
-        function(err, user) {
-            if (!err) {
-                return res.send({
-                    "message": "Success",
-                    "user": user
-                });
-            } else {
-                return res.send("Error");
-            }
-        });
-});
-
-// DELETE
-app.get('/deleteAllUsers', function(req, res) {
-    mongoose.model('users').remove({}, function(err) {
-        if (!err) {
-            return res.send("All users deleted");
-        } else {
-            return res.send("error");
-        }
-    })
-});
-
-// use url in query exmaple
-app.get('/posts/:userId', function(req, res) {
-    mongoose.model('posts').find({
-        user: req.params.userId
-    }, function(err, posts) {
-        res.send(posts);
-    });
-});
