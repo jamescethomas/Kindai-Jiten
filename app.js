@@ -6,6 +6,9 @@ var tls = require('tls');
 var bodyParser = require('body-parser');
 var path = require("path");
 
+// Get .env variables
+require('dotenv').config();
+
 var mongoose = require('mongoose');
 
 var auth = require('./auth.js');
