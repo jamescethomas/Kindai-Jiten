@@ -21,8 +21,8 @@ var comment = require('./app/module/comment.js');
 var app = express();
 var port = process.env.PORT || 5000;
 
-var DBPathLocal = "mongodb://localhost:27017/urbanjisho"
-var DBPathProd = "mongodb://james:mongojames1@ds047752.mongolab.com:47752/heroku_wf7xgb1q"
+var DBPathLocal = "mongodb://localhost:27017/kindaijiten"
+var DBPathProd = "mongodb://18.216.128.26:27017/kindaijiten"
 
 var clientDir = path.resolve(__dirname, 'client/build');
 
