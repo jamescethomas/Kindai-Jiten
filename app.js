@@ -20,26 +20,22 @@ var comment = require('./app/module/comment.js');
 
 var app = express();
 var port = process.env.PORT || 80;
+var env = process.env.NODE_ENV || 'dev';
 
 var DBPathLocal = "mongodb://localhost:27017/kindaijiten"
-var DBPathProd = "mongodb://18.216.128.26:27017/kindaijiten"
+var DBPathProd = "mongodb://localhost:27017/kindaijiten"
 
 var clientDir = path.resolve(__dirname, 'client/build');
 
-if (!process.env.PORT) {
-    mongoose.useMongoClient = DBPathLocal;
+if (env === 'production') {
+  mongoose.useMongoClient = DBPathProd;
 } else {
-    mongoose.useMongoClient = DBPathProd;
+  mongoose.useMongoClient = DBPathLocal;
 }
 mongoose.connect(DBPathLocal);
 
 // Init kuroshiro for japanese text conversions
 kuroshiro.init();
-
-// app.use(require('less-middleware')('/less', {
-//     dest: '/css',
-//     pathRoot: path.join(__dirname, 'public')
-// }));
 
 app.use(express.static(clientDir));
 
@@ -65,10 +61,15 @@ app.all('/api/*', [require('./validateRequest')]);
 
 http.createServer(app).listen(port);
 
-var options = {
-    key: fs.readFileSync('key.pem'),
-    cert: fs.readFileSync('key-cert.pem')
-};
+var options = {};
+if (env === 'production') {
+  options.key = fs.readFileSync('/etc/ssl/kindaijiten.com.key');
+  options.cert = fs.readFileSync('/etc/ssl/kindaijiten.com.crt');
+  options.ca = fs.readFileSync('/etc/ssl/certs/ca-bundle.trust.crt');
+} else {
+  options.key = fs.readFileSync('key.pem');
+  options.cert = fs.readFileSync('key-cert.pem');
+}
 
 https.createServer(options, app).listen(8081);
 
