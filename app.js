@@ -38,7 +38,15 @@ if (env === 'production') {
 mongoose.connect(DBPathLocal);
 
 // Init kuroshiro for japanese text conversions
-kuroshiro.init();
+kuroshiro.init({
+  dicPath: path.resolve(__dirname, 'node_modules/kuromoji/dict/')
+},function (err) {
+   if (err) {
+     console.log(err);
+   } else { 
+     console.log('kuroshiro is ready');
+   }
+});
 
 app.use(function(req, res, next) {
   if(!req.secure) {
