@@ -39,7 +39,15 @@ if (env === 'production') {
 mongoose.connect(DBPathLocal);
 
 // Init kuroshiro for japanese text conversions
-kuroshiro.init();
+kuroshiro.init({
+  dicPath: path.resolve(__dirname, 'node_modules/kuromoji/dict/')
+},function (err) {
+   if (err) {
+     console.log(err);
+   } else { 
+     console.log('kuroshiro is ready');
+   }
+});
 
 app.use(function(req, res, next) {
   if(!req.secure && env === 'production') {
@@ -74,9 +82,9 @@ http.createServer(app).listen(port);
 
 var options = {};
 if (env === 'production') {
-  options.key = fs.readFileSync('/etc/ssl/kindaijiten.com.key');
-  options.cert = fs.readFileSync('/etc/ssl/kindaijiten.com.crt');
-  options.ca = fs.readFileSync('/etc/ssl/certs/ca-bundle.trust.crt');
+  options.key = fs.readFileSync('/etc/ssl/private/domain.key');
+  options.cert = fs.readFileSync('/etc/ssl/certs/domain.crt');
+  options.ca = fs.readFileSync('/etc/ssl/certs/intermediate.pem');
 } else {
   options.key = fs.readFileSync('key.pem');
   options.cert = fs.readFileSync('key-cert.pem');
