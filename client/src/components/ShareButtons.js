@@ -6,7 +6,7 @@ import Strings from 'react-l20n-u';
 
 class ShareButtons extends Component {
   render() {
-    var url = encodeURI('http://localhost:3000/word/' + this.props.word);
+    var url = encodeURI('https://www.kindaijiten.com/word/' + this.props.word);
     var message = encodeURI(Strings.getRaw('share-message'));
 
     const style = {
