@@ -22,7 +22,6 @@ var contact = require('./app/module/contact.js');
 var comment = require('./app/module/comment.js');
 
 var app = express();
-var port = process.env.PORT || 80;
 var env = process.env.NODE_ENV || 'dev';
 
 var DBPathLocal = "mongodb://localhost:27017/kindaijiten"
@@ -32,8 +31,10 @@ var clientDir = path.resolve(__dirname, 'client/build');
 
 if (env === 'production') {
   mongoose.useMongoClient = DBPathProd;
+  port = 80;
 } else {
   mongoose.useMongoClient = DBPathLocal;
+  port = 5000;
 }
 mongoose.connect(DBPathLocal);
 
@@ -41,7 +42,7 @@ mongoose.connect(DBPathLocal);
 kuroshiro.init();
 
 app.use(function(req, res, next) {
-  if(!req.secure) {
+  if(!req.secure && env === 'production') {
     return res.redirect(['https://', req.get('Host'), req.url].join(''));
   }
   next();

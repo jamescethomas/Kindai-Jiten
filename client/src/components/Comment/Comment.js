@@ -142,12 +142,14 @@ class Comment extends Component {
           {
             (this.props.loggedIn && this.props.userid === this.props.user.userid) ?
             <span>
+              {/* TODO ADD EDITING FEATURE
               <span
                 className="link no-color"
                 onClick={this.onEditClick.bind(this)}
               >
                 {Strings.get('edit')}
               </span>・
+              */}
               <span
                 className="link no-color"
                 onClick={this.onDeleteClick.bind(this)}

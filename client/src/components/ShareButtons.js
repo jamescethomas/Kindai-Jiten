@@ -17,8 +17,9 @@ class ShareButtons extends Component {
 
     const iconStyle = {
       color: '#fff',
-      paddingTop: '4px',
-      paddingLeft: '1px'
+      paddingTop: '0px',
+      paddingLeft: '1px',
+      marginTop: '-4px'
     }
 
     const containerStyle = {
@@ -52,6 +53,7 @@ class ShareButtons extends Component {
           href={"https://plus.google.com/share?url=" + url}
           target="_blank"
         />
+        {/*
         <RaisedButton
           className="share-button"
           backgroundColor="#777777"
@@ -60,6 +62,7 @@ class ShareButtons extends Component {
           href={"mailto:?subject=" + message + ";body=" + url}
           target="_blank"
         />
+        */}
       </div>
     );
   }

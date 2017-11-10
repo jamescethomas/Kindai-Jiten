@@ -91,4 +91,20 @@ add-comment = コメントする
 comment-author = { $name }さん
 see-more-comments = もっとコメンを見る
 confirm-delete-comment = コメントを削除してもよろしいですか？
+
+[[About]]
+about-line-1 = きんだい辞典は、通常の辞典では学ぶことの難しい日本語のスラングや日常会話で実際に使われている表現を学ぶために作られました。
+about-line-2 = 言語は常に変化し、新しい言葉が作り出されています。そのような中で、きんだい辞典では人々に現代のありのままの日本語を伝え、理解して頂くことを目標としています。
+
+about-line-3-part-1 = もし、追加したい言葉や表現があれば
+about-line-3-link   = ここをクリック
+about-line-3-part-2 = して下さい。
+
+about-line-4-part-1 = また、既存の投稿にコメントやいいねを残したい場合は、Facebookで
+about-line-4-link   = ログイン
+about-line-4-part-2 = して下さい。
+
+about-line-5-part-1 = このサイトに関する感想やご意見があればお気軽に
+about-line-5-link   = ご連絡
+about-line-5-part-2 = 頂けると幸いです。
 `;

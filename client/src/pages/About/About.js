@@ -40,18 +40,21 @@ class About extends Component {
             />
             <br/>
             <span style={pStyle}>
-              きんだい辞典 (Kindai Jiten) was created as a place to learn and explore japanese
-              slang terms and colloquialisms that might not be found in a standard dictionary.
+              {Strings.get('about-line-1')}
               <br/><br/>
-              Languages are always changing and developing.
+              {Strings.get('about-line-2')}
+              <br/><br/>
+              {Strings.get('about-line-3-part-1')}
+               <Link href="define" text={Strings.get('about-line-3-link')}></Link>
+               {Strings.get('about-line-3-part-2')}
               <br/>
-              きんだい辞典 aims to help shead some light on that evolution with the use of user submitted termanology.
+              {Strings.get('about-line-4-part-1')}
+               <Link href="login" text={Strings.get('about-line-4-link')}></Link>
+               {Strings.get('about-line-4-part-2')}
               <br/><br/>
-              If there is a word or phrase you would like to add, please click <Link href="define" text="this link"></Link> to share your contribution.
-              <br/>
-              If you would like to comment or like words please login with Facebook <Link href="login" text="here"/>.
-              <br/><br/>
-              Any feedback or suggestions about that site would be greatly appreciated! Please feel free to reach out via this <Link href="contact" text="contact form"/>.
+              {Strings.get('about-line-5-part-1')}
+               <Link href="contact" text={Strings.get('about-line-5-link')}></Link>
+               {Strings.get('about-line-5-part-2')}
             </span>
           </Paper>
         </MuiThemeProvider>

@@ -13,7 +13,9 @@ class Login extends Component {
     return (
       <div className="Login" ref="login">
         <LoginForm />
+        {/* TODO ADD USER LOGIN FEATURE
         <UserLogin />
+        */}
       </div>
     );
   }

@@ -16,9 +16,10 @@ import config from './config.js';
 const cookies = new Cookies();
 
 var user = cookies.get(config.APP_NAME + '-user');
+var language = window.navigator.userLanguage || window.navigator.language;
 
 const store = createStore(reducers, {
-  language: cookies.get(config.APP_NAME + '-language') || 'EN',
+  language: cookies.get(config.APP_NAME + '-language') || (language === 'en-US') ? 'EN' : 'JP',
   user: {
     loggedIn: (user && user.loggedIn && (user.data && (user.data.expires > Date.now()))) || false,
     data: (user) ? user.data : {}

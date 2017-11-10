@@ -93,4 +93,25 @@ add-comment = Add a comment
 comment-author = { $name }
 see-more-comments = See more comments ...
 confirm-delete-comment = Are you sure you want to delete your comment?
+
+[[About]]
+about-line-1 =
+  | きんだい辞典 (Kindai Jiten) was created as a place to learn and explore japanese
+  | slang terms and colloquialisms that might not be found in a standard dictionary.
+about-line-2 =
+  | Languages are always changing and developing.
+  | きんだい辞典 aims to help shead some light on that evolution with the use of user submitted termanology.
+
+about-line-3-part-1 = "If there is a word or phrase you would like to add, please click "
+about-line-3-link   = this link
+about-line-3-part-2 = " to share your contribution."
+
+about-line-4-part-1 = "If you would like to comment or like words please login with Facebook "
+about-line-4-link   = here
+about-line-4-part-2 = .
+
+
+about-line-5-part-1 = "Any feedback or suggestions about that site would be greatly appreciated! Please feel free to reach out via this "
+about-line-5-link   = contact form
+about-line-5-part-2 = .
 `;
